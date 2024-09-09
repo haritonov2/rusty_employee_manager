@@ -1,27 +1,24 @@
 use std::collections::HashMap;
 
 pub trait CompanyOps {
-    fn new() -> Self;
-    fn add_employee(&self, dep: &str, name: &str) -> bool;
-    fn get_dep_employees(&self, dep: &str) -> bool;
+    fn add_employee(&self, dep: &str, name: &str);
+    fn get_dep_employees(&self, dep: &str);
 }
 
 pub struct Company {
     departments: HashMap<String, Vec<String>>
 }
 
-impl CompanyOps for Company {
-    fn new() -> Company {
+impl Company {
+    pub fn new() -> Company {
         Company {
             departments: HashMap::new(),
         }
     }
+}
 
-    fn add_employee(&self, dep: &str, name: &str) -> bool {
-        false
-    }
+impl CompanyOps for Company {
+    fn add_employee(&self, dep: &str, name: &str) {}
 
-    fn get_dep_employees(&self, dep: &str) -> bool {
-        false
-    }
+    fn get_dep_employees(&self, dep: &str) {}
 }
