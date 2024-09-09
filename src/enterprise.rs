@@ -11,11 +11,11 @@ impl Company {
         }
     }
 
-    pub fn add_employee(&self, dep: String, name: String) {
+    pub fn add_employee(&self, dep: &str, name: &str) {
         // TBD
     }
 
-    pub fn get_dep_employees(&self, dep: String) {
+    pub fn get_dep_employees(&self, dep: &str) {
         // TBD
     }
 }

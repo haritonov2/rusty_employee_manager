@@ -3,6 +3,8 @@ mod enterprise;
 use std::io;
 use enterprise::Company;
 
+const TO: &str = "to";
+
 fn main() {
     print!("Welcome to an employee manager!\r\n");
     print!("Use two types of commands:\r\n");
@@ -27,7 +29,7 @@ fn main() {
 
         let is_valid = match cmd_words[0].to_lowercase().as_str() {
             "add"  => add_cmd(&company, cmd_words),
-            "show" => show_cmd(),
+            "show" => show_cmd(&company, cmd_words),
             "exit" => break,
             _ => false,
         };
@@ -43,12 +45,16 @@ fn main() {
 fn add_cmd(company: &Company, words: Vec<&str>) -> bool {
     let is_valid = true;
 
+    if words.len() != 4 || words[2] != TO {
+        return false
+    }
+
     // company.add_employee(String::from("QA"), String::from("Sasha"))
 
     is_valid
 }
 
-fn show_cmd() -> bool {
+fn show_cmd(company: &Company, words: Vec<&str>) -> bool {
     let is_valid = true;
 
     // company.get_dep_employees(String::from("QA")),
@@ -56,7 +62,19 @@ fn show_cmd() -> bool {
     is_valid
 }
 
-// Add [Employee name] to [dep name]
-// Add Amir to Sales
+#[cfg(test)]
+#[test]
+fn test_add_cmd_4_words_validation() {
+    let company = Company::new();
+    let invalid_words = vec!("Add", "QA", "to");
 
-// Show [dep name]
+    assert_eq!(add_cmd(&company, invalid_words), false);
+}
+
+#[test]
+fn test_add_cmd_no_to_word() {
+    let company = Company::new();
+    let invalid_words = vec!("Add", "QA", "from", "team");
+
+    assert_eq!(add_cmd(&company, invalid_words), false);
+}
