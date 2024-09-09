@@ -5,7 +5,7 @@ pub use enterprise::CompanyOps;
 
 const TO: &str = "to";
 
-pub fn add_cmd(company: &dyn CompanyOps, words: Vec<&str>) -> bool {
+pub fn add_cmd(company: &mut dyn CompanyOps, words: Vec<&str>) -> bool {
     if words.len() != 4 || words[2] != TO {
         return false
     }

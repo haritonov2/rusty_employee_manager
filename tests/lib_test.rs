@@ -10,33 +10,36 @@ impl StubCompany {
 }
 
 impl CompanyOps for StubCompany {
-    fn add_employee(&self, _dep: &str, _name: &str) {}
+    fn add_employee(&mut self, _dep: &str, _name: &str) {}
 
-    fn get_dep_employees(&self, _dep: &str) {}
+    fn get_dep_employees(&self, _dep: &str) -> String {
+        String::new()
+    }
 }
 
+#[cfg(test)]
 #[test]
 fn test_add_cmd_4_words_validation() {
-    let company = StubCompany::new();
+    let mut company = StubCompany::new();
     let invalid_words = vec!("Add", "Sasha", "to");
 
-    assert_eq!(add_cmd(&company, invalid_words), false);
+    assert_eq!(add_cmd(&mut company, invalid_words), false);
 }
 
 #[test]
 fn test_add_cmd_no_to_word() {
-    let company = StubCompany::new();
+    let mut company = StubCompany::new();
     let invalid_words = vec!("Add", "Sasha", "from", "QA");
 
-    assert_eq!(add_cmd(&company, invalid_words), false);
+    assert_eq!(add_cmd(&mut company, invalid_words), false);
 }
 
 #[test]
 fn test_add_cmd() {
-    let company = StubCompany::new();
+    let mut company = StubCompany::new();
     let words = vec!("Add", "Sasha", "to", "QA");
 
-    assert!(add_cmd(&company, words));
+    assert!(add_cmd(&mut company, words));
 }
 
 #[test]

@@ -9,9 +9,9 @@ fn main() {
     print!("OR\r\n");
     print!("\"Show [department name]\" ===> Example: \"Show [department name]\"\r\n");
     print!("OR\r\n");
-    print!("\"Exit\"");
+    print!("\"Exit\"\r\n");
 
-    let company = Company::new();
+    let mut company = Company::new();
 
     loop {
         println!("Please enter a command:");
@@ -25,7 +25,7 @@ fn main() {
         let cmd_words: Vec<&str> = raw_cmd.trim().split_whitespace().collect();
 
         let is_valid = match cmd_words[0].to_lowercase().as_str() {
-            "add"  => add_cmd(&company, cmd_words),
+            "add"  => add_cmd(&mut company, cmd_words),
             "show" => show_cmd(&company, cmd_words),
             "exit" => break,
             _ => false,
