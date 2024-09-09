@@ -18,10 +18,10 @@ impl CompanyOps for Company {
     }
 
     fn add_employee(&self, dep: &str, name: &str) -> bool {
-        true
+        false
     }
 
     fn get_dep_employees(&self, dep: &str) -> bool {
-        true
+        false
     }
 }
