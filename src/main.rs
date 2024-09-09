@@ -25,26 +25,35 @@ fn main() {
 
         let cmd_words: Vec<&str> = raw_cmd.trim().split_whitespace().collect();
 
-        if cmd_words.len() < 2 {
-            println!("Invalid command: {}", raw_cmd);
-            continue;
-        }
-
-        match cmd_words[0].to_lowercase().as_str() {
-            "add" => {
-                company.add_employee(String::from("QA"), String::from("Sasha"))
-            },
-            "show" => company.get_dep_employees(String::from("QA")),
+        let is_valid = match cmd_words[0].to_lowercase().as_str() {
+            "add"  => add_cmd(&company, cmd_words),
+            "show" => show_cmd(),
             "exit" => break,
-            _ => {
-                println!("Invalid command: {}", raw_cmd);
-                println!("A command should start with: \"Add\", \"Show\" or \"Exit\"");
-                continue;
-            },
+            _ => false,
+        };
+
+        if !is_valid {
+            println!("Invalid command: {}", raw_cmd);
         }
     }
 
     println!("Goodbye!");
+}
+
+fn add_cmd(company: &Company, words: Vec<&str>) -> bool {
+    let is_valid = true;
+
+    // company.add_employee(String::from("QA"), String::from("Sasha"))
+
+    is_valid
+}
+
+fn show_cmd() -> bool {
+    let is_valid = true;
+
+    // company.get_dep_employees(String::from("QA")),
+
+    is_valid
 }
 
 // Add [Employee name] to [dep name]

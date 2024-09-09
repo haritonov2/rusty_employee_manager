@@ -1,21 +1,21 @@
 use std::collections::HashMap;
 
 pub struct Company {
-    _departments: HashMap<String, Vec<String>>
+    departments: HashMap<String, Vec<String>>
 }
 
 impl Company {
     pub fn new() -> Company {
         Company {
-            _departments: HashMap::new(),
+            departments: HashMap::new(),
         }
     }
 
-    pub fn add_employee(&self, _dep: String, _name: String) {
+    pub fn add_employee(&self, dep: String, name: String) {
         // TBD
     }
 
-    pub fn get_dep_employees(&self, _dep: String) {
+    pub fn get_dep_employees(&self, dep: String) {
         // TBD
     }
 }
