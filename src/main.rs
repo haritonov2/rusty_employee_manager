@@ -2,6 +2,7 @@ mod enterprise;
 
 use std::io;
 use enterprise::Company;
+use enterprise::CompanyOps;
 
 const TO: &str = "to";
 
