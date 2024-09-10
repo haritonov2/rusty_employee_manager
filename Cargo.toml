@@ -1,6 +1,10 @@
 [package]
 name = "rusty_employee_manager"
 version = "0.1.0"
+authors = ["Alexander (Sasha) Kharitonov <a.haritonov.web@gmail.com>"]
 edition = "2021"
+
+license = "MIT"
+license-file = "LICENSE"
 
 [dependencies]
